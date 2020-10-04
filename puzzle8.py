@@ -179,36 +179,45 @@ def h(puzzle, solucion):
 cant = 0
 solucion = [[1,2,3], [4,5,6], [7,8,0]]
 
-print ("Solucion: ", solucion)
+while True:
+    op = input("Seleccione el modelo\n\n\t1) Dfs\n\t2)A* Search\n\t3) Bfs\n\t0) Salir\n\n\nOpcion: ")
+    
+    if op == "1" and op == "3":
+        print ("Solucion: ", solucion)
+        for j in range(0, 10):
+            for i in range(0, 10):
+                puzzle = crea_puzzle()
+                if op == 1:
+                    res, flag = Dfs(puzzle, solucion)
+                elif op == 3:
+                    res, flag = Bfs(puzzle, solucion)
+                if flag:
+                    cant = cant + 1
+                print("Puzzle: ", res)
+            print("Vuelta: ",j+1, " Cantidad: ", cant)
+            print("-"*80)
+        promedio = cant / 10
+        print("Promedio: ", promedio)
+    elif op == "2":
+        print ("Solucion: ", solucion)
+        for j in range(0, 10):
+            puzzle = crea_puzzle()
+            res, flag = aStar(puzzle, solucion)
+            if flag:
+                cant = cant + 1
+            print("Puzzle: ")
+            for i in res:
+                print(res[i])
+        print("Vuelta: ",j+1, " Cantidad: ", cant)
+        print("-"*80)
+        promedio = cant / 10
+        print("Promedio: ", promedio)
+    elif op == "0":
+        break
+    else:
+        print("Caracter incorrecto")
 
-#Codigo de busquedas
 
-# for j in range(0, 10):
-#     for i in range(0, 10):
-#         puzzle = crea_puzzle()
-#         res, flag = Bfs(puzzle, solucion)
-#         if flag:
-#             cant = cant + 1
-#         print("Puzzle: ", res)
-#     print("Vuelta: ",j+1, " Cantidad: ", cant)
-#     print("-"*80)
-# promedio = cant / 10
-# print("Promedio: ", promedio)
-
-# Codigo para aStar
-
-for j in range(0, 10):
-    puzzle = crea_puzzle()
-    res, flag = aStar(puzzle, solucion)
-    if flag:
-        cant = cant + 1
-    print("Puzzle: ")
-    for i in res:
-        print(res[i])
-print("Vuelta: ",j+1, " Cantidad: ", cant)
-print("-"*80)
-promedio = cant / 10
-print("Promedio: ", promedio)
 
     
     
